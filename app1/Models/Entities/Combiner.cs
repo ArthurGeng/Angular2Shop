@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
-
 
 namespace app1.Models.Entities
 {
-    public class Product
+    public class Combiner
     {
         public int Id { get; set; }
         [Required]
@@ -16,7 +15,9 @@ namespace app1.Models.Entities
         public Double Price { get; set; }
         [Required]
         public Boolean InStock { get; set; }
+        [Required]
+        public String ProductCompany { get; set; }
 
-        public virtual ProductDetails ProductDetails { get; set; }
+        
     }
 }

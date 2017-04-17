@@ -14,44 +14,44 @@ using app1.Models.Entities;
 
 namespace app1.Controllers
 {
-    public class ProductsController : ApiController
+    public class CombinersController : ApiController
     {
         private app1Context db = new app1Context();
 
-        // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        // GET: api/Combiners
+        public IQueryable<Combiner> GetCombiners()
         {
-            return db.Products;
+            return db.Combiners;
         }
 
-        // GET: api/Products/5
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> GetProduct(int id)
+        // GET: api/Combiners/5
+        [ResponseType(typeof(Combiner))]
+        public async Task<IHttpActionResult> GetCombiner(int id)
         {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
+            Combiner combiner = await db.Combiners.FindAsync(id);
+            if (combiner == null)
             {
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(combiner);
         }
 
-        // PUT: api/Products/5
+        // PUT: api/Combiners/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProduct(int id, Product product)
+        public async Task<IHttpActionResult> PutCombiner(int id, Combiner combiner)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != product.Id)
+            if (id != combiner.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(product).State = EntityState.Modified;
+            db.Entry(combiner).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace app1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!CombinerExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,38 @@ namespace app1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Products
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> PostProduct(Product product)
+        // POST: api/Combiners
+        [ResponseType(typeof(Combiner))]
+        public async Task<IHttpActionResult> PostCombiner(Combiner combiner)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            var product = new Product() { ProductName = combiner.ProductName, Price = combiner.Price, InStock = combiner.InStock };
+            product.ProductDetails = new ProductDetails() { ProductCompany = combiner.ProductCompany };
+
             db.Products.Add(product);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
+            return CreatedAtRoute("DefaultApi", new { id = combiner.Id }, combiner);
         }
 
-        // DELETE: api/Products/5
-        [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> DeleteProduct(int id)
+        // DELETE: api/Combiners/5
+        [ResponseType(typeof(Combiner))]
+        public async Task<IHttpActionResult> DeleteCombiner(int id)
         {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
+            Combiner combiner = await db.Combiners.FindAsync(id);
+            if (combiner == null)
             {
                 return NotFound();
             }
 
-            db.Products.Remove(product);
+            db.Combiners.Remove(combiner);
             await db.SaveChangesAsync();
 
-            return Ok(product);
+            return Ok(combiner);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +115,9 @@ namespace app1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProductExists(int id)
+        private bool CombinerExists(int id)
         {
-            return db.Products.Count(e => e.Id == id) > 0;
+            return db.Combiners.Count(e => e.Id == id) > 0;
         }
     }
 }

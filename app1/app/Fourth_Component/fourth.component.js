@@ -20,10 +20,10 @@ var FourthComponent = (function () {
     }
     FourthComponent.prototype.addProduct = function (formValues) {
         ////formValues.date = new Date();
-        //console.log(formValues);
+        console.log(formValues);
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        this.http.post('api/Products', JSON.stringify(formValues), options)
+        this.http.post('api/Combiners', JSON.stringify(formValues), options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.log('yay'); });
         //console.log("1");

@@ -102,17 +102,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CombinersController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704161007525_Initial.cs" />
-    <Compile Include="Migrations\201704161007525_Initial.Designer.cs">
-      <DependentUpon>201704161007525_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\app1Context.cs" />
+    <Compile Include="Models\Entities\Combiner.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,11 +143,6 @@
     <TypeScriptCompile Include="app\Second_Component\second.component.ts" />
     <TypeScriptCompile Include="app\services\products.service.ts" />
     <TypeScriptCompile Include="app\Third_Component\third.component.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704161007525_Initial.resx">
-      <DependentUpon>201704161007525_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

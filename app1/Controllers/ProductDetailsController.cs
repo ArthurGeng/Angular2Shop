@@ -82,7 +82,22 @@ namespace app1.Controllers
             }
 
             db.ProductDetails.Add(productDetails);
-            await db.SaveChangesAsync();
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (ProductDetailsExists(productDetails.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = productDetails.Id }, productDetails);
         }

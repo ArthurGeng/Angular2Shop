@@ -22,12 +22,12 @@ export class FourthComponent {
 
        
         ////formValues.date = new Date();
-        //console.log(formValues);
+        console.log(formValues);
 
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.post('api/Products', JSON.stringify(formValues), options)
+        this.http.post('api/Combiners', JSON.stringify(formValues), options)
             .map((res: Response) => res.json())
             .subscribe(
             data => console.log(data),

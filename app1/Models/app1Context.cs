@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using app1.Models.Entities;
 
 namespace app1.Models
 {
@@ -22,5 +23,13 @@ namespace app1.Models
         public System.Data.Entity.DbSet<app1.Models.Entities.Product> Products { get; set; }
 
         public System.Data.Entity.DbSet<app1.Models.Entities.ProductDetails> ProductDetails { get; set; }
+
+        public System.Data.Entity.DbSet<app1.Models.Entities.Combiner> Combiners { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Combiner>().HasOptional(s => s.Product).WithRequired(i => i.Combiner);
+            modelBuilder.Entity<Product>().HasOptional(s => s.ProductDetails).WithRequired(i => i.Product);
+        }
     }
 }
