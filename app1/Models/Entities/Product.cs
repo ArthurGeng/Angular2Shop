@@ -17,6 +17,6 @@ namespace app1.Models.Entities
         [Required]
         public Boolean InStock { get; set; }
 
-        public virtual ProductDetails ProductDetails { get; set; }
+        public ProductDetails ProductDetails { get; set; }
     }
 }

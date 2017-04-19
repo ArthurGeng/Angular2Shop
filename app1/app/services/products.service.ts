@@ -1,15 +1,15 @@
-﻿import { Http } from '@angular/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+﻿//import { Http } from '@angular/http';
+//import { Injectable } from '@angular/core';
+//import { Observable } from 'rxjs/Rx';
 
-@Injectable()
-export class ProductsService {
+//@Injectable()
+//export class ProductsService {
 
-    constructor(private http: Http) {
+//    constructor(private http: Http) {
 
-    }
+//    }
 
-    getProducts(): Observable<Object>{
-        return this.http.get('api/Products');
-    }
-}
+//    getProducts(): Observable<Object>{
+//        return this.http.get('api/Products');
+//    }
+//}

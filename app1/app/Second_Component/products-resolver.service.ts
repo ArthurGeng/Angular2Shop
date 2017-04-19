@@ -1,14 +1,16 @@
-﻿import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-import { ProductsService } from '../services/products.service';
+﻿//import { Injectable } from '@angular/core';
+//import { Resolve } from '@angular/router';
+//import { ProductsService } from '../services/products.service';
 
-@Injectable()
-export class ProductsResolver implements Resolve<any> {
 
-    constructor(private productsService: ProductsService) { }
+//@Injectable()
+//export class ProductsResolver implements Resolve<any> {
 
-    //Observable
-    resolve() {
-        return this.productsService.getProducts();
-    }
-}
+//    constructor(private productsService: ProductsService) { }
+
+
+//    //Observable
+//    resolve() {
+//        return this.productsService.getProducts();
+//    }
+//}

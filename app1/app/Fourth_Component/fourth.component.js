@@ -11,12 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Observable_1 = require("rxjs/Observable");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/do");
 var FourthComponent = (function () {
-    function FourthComponent(http) {
+    function FourthComponent(http, router) {
         this.http = http;
+        this.router = router;
     }
     FourthComponent.prototype.addProduct = function (formValues) {
         ////formValues.date = new Date();
@@ -26,14 +28,15 @@ var FourthComponent = (function () {
         this.http.post('api/Combiners', JSON.stringify(formValues), options)
             .map(function (res) { return res.json(); })
             .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.log('yay'); });
-        //console.log("1");
-        //this.http.get('api/products').map((res: Response) => <IProduct[]>res.json())
+        //this.http.get('api/Products').map((res: Response) => <IProduct[]>res.json())
         //    .subscribe(
         //        data => console.log(data),
         //        err => console.log(err),
         //        () => console.log('yay')
         //    );
-        //console.log("2");
+    };
+    FourthComponent.prototype.cancel = function () {
+        this.router.navigate(['Products']);
     };
     FourthComponent.prototype.handleError = function (error) {
         console.log(error);
@@ -48,7 +51,7 @@ FourthComponent = __decorate([
         styles: ['h2 {color:green; }']
     }),
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, router_1.Router])
 ], FourthComponent);
 exports.FourthComponent = FourthComponent;
 //# sourceMappingURL=fourth.component.js.map

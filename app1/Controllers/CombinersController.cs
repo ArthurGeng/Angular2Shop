@@ -18,6 +18,7 @@ namespace app1.Controllers
     {
         private app1Context db = new app1Context();
 
+
         // GET: api/Combiners
         public IQueryable<Combiner> GetCombiners()
         {
@@ -81,11 +82,14 @@ namespace app1.Controllers
                 return BadRequest(ModelState);
             }
 
-            var product = new Product() { ProductName = combiner.ProductName, Price = combiner.Price, InStock = combiner.InStock };
-            product.ProductDetails = new ProductDetails() { ProductCompany = combiner.ProductCompany };
+            using (var db1 = new app1Context())
+            {
+                var product = new Product() { ProductName = combiner.ProductName, Price = combiner.Price, InStock = combiner.InStock };
+                product.ProductDetails = new ProductDetails() { ProductCompany = combiner.ProductCompany };
 
-            db.Products.Add(product);
-            await db.SaveChangesAsync();
+                db1.Products.Add(product);
+                await db1.SaveChangesAsync();
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = combiner.Id }, combiner);
         }

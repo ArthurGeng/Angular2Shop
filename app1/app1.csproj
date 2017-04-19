@@ -92,6 +92,7 @@
     <Content Include="app\app.component.css" />
     <Content Include="app\app.component.html" />
     <Content Include="app\Fourth_Component\fourthcomponent.html" />
+    <Content Include="app\productDetails\productDetails.html" />
     <Content Include="app\Second_Component\products.component.html" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
@@ -137,7 +138,8 @@
     <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\First_Component\first.component.ts" />
     <TypeScriptCompile Include="app\Fourth_Component\fourth.component.ts" />
-    <TypeScriptCompile Include="app\Fourth_Component\product.ts" />
+    <TypeScriptCompile Include="app\productDetails\productDetails.ts" />
+    <TypeScriptCompile Include="app\Second_Component\product.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Second_Component\products-resolver.service.ts" />
     <TypeScriptCompile Include="app\Second_Component\second.component.ts" />

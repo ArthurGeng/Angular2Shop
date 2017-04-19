@@ -16,6 +16,7 @@ var first_component_1 = require("./First_Component/first.component");
 var second_component_1 = require("./Second_Component/second.component");
 var third_component_1 = require("./Third_Component/third.component");
 var fourth_component_1 = require("./Fourth_Component/fourth.component");
+var productDetails_1 = require("./productDetails/productDetails");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +25,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(app_routes_1.routes, { useHash: true })],
-        declarations: [app_component_1.AppComponent, first_component_1.FirstComponent, second_component_1.SecondComponent, third_component_1.ThirdComponent, fourth_component_1.FourthComponent],
+        declarations: [app_component_1.AppComponent, first_component_1.FirstComponent, second_component_1.SecondComponent, third_component_1.ThirdComponent, fourth_component_1.FourthComponent, productDetails_1.ProductDetails],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

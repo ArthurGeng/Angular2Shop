@@ -14,6 +14,6 @@ namespace app1.Models.Entities
         [Required]
         public String ProductCompany { get; set; }
        
-        public virtual Product Product { get; set; }
+        public  Product Product { get; set; }
     }
 }

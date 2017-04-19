@@ -1,11 +1,12 @@
 ﻿
 import { Observable } from 'rxjs/Observable';
 import { Component, Injectable } from '@angular/core';
-import { Http, Response ,  Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-import { IProduct } from './product';
+
 
 @Component({
     selector: 'fourth-app',
@@ -16,7 +17,7 @@ import { IProduct } from './product';
 @Injectable()
 export class FourthComponent {
 
-    constructor(private http:Http){}
+    constructor(private http:Http,private router:Router){}
 
     addProduct(formValues: any):void {
 
@@ -34,15 +35,19 @@ export class FourthComponent {
             err => console.log(err),
             () => console.log('yay')
         );
-        //console.log("1");
-        //this.http.get('api/products').map((res: Response) => <IProduct[]>res.json())
+       
+        //this.http.get('api/Products').map((res: Response) => <IProduct[]>res.json())
         //    .subscribe(
         //        data => console.log(data),
         //        err => console.log(err),
         //        () => console.log('yay')
         //    );
      
-        //console.log("2");
+        
+    }
+
+    cancel() {
+        this.router.navigate(['Products']);
     }
 
     private handleError(error: Response) {
