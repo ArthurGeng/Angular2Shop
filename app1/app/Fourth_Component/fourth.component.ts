@@ -17,31 +17,13 @@ import { CustomValidators } from './custom.validators';
 
 @Injectable()
 export class FourthComponent implements OnInit {
-
-   
+  
     profileForm: FormGroup;
-
-    //private ProductName: FormControl;
-    //private Price: FormControl;
-    //private InStock: FormControl;
-    //private ProductCompany: FormControl;
 
     constructor(private http: Http, private router: Router, private _fb: FormBuilder) { }
 
     ngOnInit() {
         console.log("1");
-        //this.ProductName = new FormControl('', [Validators.required, Validators.minLength(2)]);
-        //this.Price = new FormControl('',Validators.required);
-        //this.InStock = new FormControl('', [Validators.required, CustomValidators.inStock]);
-        //this.ProductCompany = new FormControl('', [Validators.required, Validators.minLength(5)]);
-
-        //this.profileForm = new FormGroup({
-        //    ProductName: this.ProductName,
-        //    Price: this.Price,
-        //    InStock: this.InStock,
-        //    ProductCompany: this.ProductCompany
-        //});
-
         this.profileForm = this._fb.group({
             ProductName: ['', [Validators.required, Validators.minLength(2)]],
             Price: ['', Validators.required],
@@ -52,7 +34,6 @@ export class FourthComponent implements OnInit {
 
     addProduct(): void {
         ////formValues.date = new Date();
-        //console.log(formValues);
         console.log(this.profileForm.value);
 
         if (this.profileForm.valid) {

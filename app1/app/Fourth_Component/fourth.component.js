@@ -17,10 +17,6 @@ require("rxjs/add/operator/catch");
 require("rxjs/add/operator/do");
 var custom_validators_1 = require("./custom.validators");
 var FourthComponent = (function () {
-    //private ProductName: FormControl;
-    //private Price: FormControl;
-    //private InStock: FormControl;
-    //private ProductCompany: FormControl;
     function FourthComponent(http, router, _fb) {
         this.http = http;
         this.router = router;
@@ -28,16 +24,6 @@ var FourthComponent = (function () {
     }
     FourthComponent.prototype.ngOnInit = function () {
         console.log("1");
-        //this.ProductName = new FormControl('', [Validators.required, Validators.minLength(2)]);
-        //this.Price = new FormControl('',Validators.required);
-        //this.InStock = new FormControl('', [Validators.required, CustomValidators.inStock]);
-        //this.ProductCompany = new FormControl('', [Validators.required, Validators.minLength(5)]);
-        //this.profileForm = new FormGroup({
-        //    ProductName: this.ProductName,
-        //    Price: this.Price,
-        //    InStock: this.InStock,
-        //    ProductCompany: this.ProductCompany
-        //});
         this.profileForm = this._fb.group({
             ProductName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
             Price: ['', forms_1.Validators.required],
@@ -47,7 +33,6 @@ var FourthComponent = (function () {
     };
     FourthComponent.prototype.addProduct = function () {
         ////formValues.date = new Date();
-        //console.log(formValues);
         console.log(this.profileForm.value);
         if (this.profileForm.valid) {
             var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

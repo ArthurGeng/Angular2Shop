@@ -1,16 +1,4 @@
 ﻿<div>
-    <!--<form #form="ngForm" (ngSubmit)="addProduct(form.value)">
-
-        
-        <input type="text" placeholder="Product Name" (ngModel)="ProductName" name="ProductName" />
-        <input type="text" placeholder="Price" (ngModel)="Price" name="Price" />
-        <input type="text" placeholder="In Stock" (ngModel)="inStock" name="inStock" />
-       <input type="text" placeholder="Product Company" (ngModel)="ProductCompany" name="ProductCompany" />
-
-        <button type="submit">Add</button>
-        
-    </form>-->
-
     <form [formGroup]="profileForm" (ngSubmit)="addProduct()" novalidate>
 
         <div>
