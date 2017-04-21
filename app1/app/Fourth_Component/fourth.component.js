@@ -8,50 +8,70 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var Observable_1 = require("rxjs/Observable");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/do");
+var custom_validators_1 = require("./custom.validators");
 var FourthComponent = (function () {
-    function FourthComponent(http, router) {
+    //private ProductName: FormControl;
+    //private Price: FormControl;
+    //private InStock: FormControl;
+    //private ProductCompany: FormControl;
+    function FourthComponent(http, router, _fb) {
         this.http = http;
         this.router = router;
+        this._fb = _fb;
     }
-    FourthComponent.prototype.addProduct = function (formValues) {
+    FourthComponent.prototype.ngOnInit = function () {
+        console.log("1");
+        //this.ProductName = new FormControl('', [Validators.required, Validators.minLength(2)]);
+        //this.Price = new FormControl('',Validators.required);
+        //this.InStock = new FormControl('', [Validators.required, CustomValidators.inStock]);
+        //this.ProductCompany = new FormControl('', [Validators.required, Validators.minLength(5)]);
+        //this.profileForm = new FormGroup({
+        //    ProductName: this.ProductName,
+        //    Price: this.Price,
+        //    InStock: this.InStock,
+        //    ProductCompany: this.ProductCompany
+        //});
+        this.profileForm = this._fb.group({
+            ProductName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
+            Price: ['', forms_1.Validators.required],
+            InStock: ['', [forms_1.Validators.required, custom_validators_1.CustomValidators.inStock]],
+            ProductCompany: ['', [forms_1.Validators.required, forms_1.Validators.minLength(5)]]
+        });
+    };
+    FourthComponent.prototype.addProduct = function () {
         ////formValues.date = new Date();
-        console.log(formValues);
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        this.http.post('api/Combiners', JSON.stringify(formValues), options)
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.log('yay'); });
-        //this.http.get('api/Products').map((res: Response) => <IProduct[]>res.json())
-        //    .subscribe(
-        //        data => console.log(data),
-        //        err => console.log(err),
-        //        () => console.log('yay')
-        //    );
+        //console.log(formValues);
+        console.log(this.profileForm.value);
+        if (this.profileForm.valid) {
+            var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+            var options = new http_1.RequestOptions({ headers: headers });
+            this.http.post('api/Combiners', JSON.stringify(this.profileForm.value), options)
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.log('yay post'); });
+        }
+        else {
+            console.log("User input was invalid!");
+        }
     };
     FourthComponent.prototype.cancel = function () {
         this.router.navigate(['Products']);
-    };
-    FourthComponent.prototype.handleError = function (error) {
-        console.log(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
     };
     return FourthComponent;
 }());
 FourthComponent = __decorate([
     core_1.Component({
         selector: 'fourth-app',
-        templateUrl: './app/Fourth_Component/fourthcomponent.html',
-        styles: ['h2 {color:green; }']
+        templateUrl: './app/Fourth_Component/fourthcomponent.html'
     }),
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, router_1.Router])
+    __metadata("design:paramtypes", [http_1.Http, router_1.Router, forms_1.FormBuilder])
 ], FourthComponent);
 exports.FourthComponent = FourthComponent;
 //# sourceMappingURL=fourth.component.js.map

@@ -1,5 +1,5 @@
 ﻿<div>
-    <form #form="ngForm" (ngSubmit)="addProduct(form.value)">
+    <!--<form #form="ngForm" (ngSubmit)="addProduct(form.value)">
 
         
         <input type="text" placeholder="Product Name" (ngModel)="ProductName" name="ProductName" />
@@ -9,6 +9,33 @@
 
         <button type="submit">Add</button>
         
+    </form>-->
+
+    <form [formGroup]="profileForm" (ngSubmit)="addProduct()" novalidate>
+
+        <div>
+            <input type="text" placeholder="Product Name" formControlName="ProductName" />
+            <small [hidden]="profileForm.controls.ProductName.valid || profileForm.controls.ProductName.pristine">
+                Product name is required (minimum 2 characters).
+            </small>
+        </div>
+
+        <div>
+            <input type="number" placeholder="Price" formControlName="Price"  />
+        </div>
+
+        <div>
+            <input type="text" placeholder="In Stock" formControlName="InStock" />
+        </div>
+
+        <div>
+            <input type="text" placeholder="Product Company" formControlName="ProductCompany"/>
+            <small [hidden]="profileForm.controls.ProductCompany.valid || profileForm.controls.ProductCompany.pristine ">
+                Product company name is required (minimum 5 characters).
+            </small>
+        </div>
+
+        <button type="submit" [disabled]="profileForm.invalid">Add</button>
     </form>
 
     <button type="button" (click)="cancel()">Cancel</button>

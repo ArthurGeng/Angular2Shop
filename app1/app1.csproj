@@ -137,7 +137,9 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\First_Component\first.component.ts" />
+    <TypeScriptCompile Include="app\Fourth_Component\custom.validators.ts" />
     <TypeScriptCompile Include="app\Fourth_Component\fourth.component.ts" />
+    <TypeScriptCompile Include="app\Fourth_Component\product.interface.ts" />
     <TypeScriptCompile Include="app\productDetails\productDetails.ts" />
     <TypeScriptCompile Include="app\Second_Component\product.ts" />
     <TypeScriptCompile Include="app\main.ts" />
