@@ -1,12 +1,28 @@
-//import { Http } from '@angular/http';
-//import { Injectable } from '@angular/core';
-//import { Observable } from 'rxjs/Rx';
-//@Injectable()
-//export class ProductsService {
-//    constructor(private http: Http) {
-//    }
-//    getProducts(): Observable<Object>{
-//        return this.http.get('api/Products');
-//    }
-//} 
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var http_1 = require("@angular/http");
+var core_1 = require("@angular/core");
+var productsservice = (function () {
+    function productsservice(http) {
+        this.http = http;
+    }
+    productsservice.prototype.getproducts = function () {
+        return this.http.get('api/products');
+    };
+    return productsservice;
+}());
+productsservice = __decorate([
+    core_1.injectable(),
+    __metadata("design:paramtypes", [typeof (_a = typeof http_1.http !== "undefined" && http_1.http) === "function" && _a || Object])
+], productsservice);
+exports.productsservice = productsservice;
+var _a;
 //# sourceMappingURL=products.service.js.map

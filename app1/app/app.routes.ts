@@ -11,7 +11,7 @@ export const routes: Routes = [
 
     { path: 'First', component: FirstComponent },
     { path: 'Products', component: SecondComponent },
-    { path: 'Third', component: ThirdComponent },
+    { path: 'UpdateProduct', component: ThirdComponent },
     { path: 'AddProduct', component: FourthComponent },
     { path: 'ProductDetails/:id', component: ProductDetails }
 

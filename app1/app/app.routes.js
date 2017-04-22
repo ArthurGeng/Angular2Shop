@@ -7,7 +7,7 @@ var productDetails_1 = require("./productDetails/productDetails");
 exports.routes = [
     { path: 'First', component: first_component_1.FirstComponent },
     { path: 'Products', component: second_component_1.SecondComponent },
-    { path: 'Third', component: third_component_1.ThirdComponent },
+    { path: 'UpdateProduct', component: third_component_1.ThirdComponent },
     { path: 'AddProduct', component: fourth_component_1.FourthComponent },
     { path: 'ProductDetails/:id', component: productDetails_1.ProductDetails }
 ];

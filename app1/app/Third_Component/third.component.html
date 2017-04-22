@@ -1,0 +1,19 @@
+﻿<form [formGroup]="updateForm" (ngSubmit)="updateProduct()" novalidate>
+    <div>
+        <label>Update your Product: </label>
+        <input type="text" placeholder="Enter Product name" formControlName="ProductName" />
+    </div>
+    <div>
+        <label>Update your Price: </label>
+        <input type="text" placeholder="Enter Price" formControlName="Price" />
+    </div>
+    <div>
+        <label>Update Stock: </label>
+        <input type="text" placeholder="Enter In Stock" formControlName="InStock" />
+    </div>
+    <div>
+        <label>Update Product Company: </label>
+        <input type="text" placeholder="Enter Product Company" formControlName="ProductCompany" />
+    </div>
+    <button type="submit" [disabled]="updateForm.invalid">Update</button>
+</form>

@@ -39,19 +39,19 @@ namespace app1.Controllers
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProduct(int id, Product product)
+        public async Task<IHttpActionResult> PutProduct(Product product)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != product.Id)
-            {
-                return BadRequest();
-            }
+            Product temp = db.Products.Where(p => p.ProductName == product.ProductName).FirstOrDefault();
+            temp.ProductDetails = product.ProductDetails;
+            temp.Price = product.Price;
+            temp.InStock = product.InStock;
 
-            db.Entry(product).State = EntityState.Modified;
+            db.Entry(temp).State = EntityState.Modified;
 
             try
             {
@@ -59,17 +59,12 @@ namespace app1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
+                
                     throw;
-                }
+                
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(product);
         }
 
         // POST: api/Products

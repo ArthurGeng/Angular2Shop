@@ -4,6 +4,6 @@ export class CustomValidators {
 
     static inStock(control: FormControl) {
         console.log("2");
-        return control.value == "true" ? null : { valid: false };
+        return (control.value == "true" || control.value == "false") ? null : { valid: false };
     }
 }

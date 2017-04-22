@@ -8,25 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
+var product_service_1 = require("../services/product.service");
 var SecondComponent = (function () {
-    function SecondComponent(http) {
-        this.http = http;
+    function SecondComponent(_productService) {
+        this._productService = _productService;
     }
     SecondComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('api/Products').map(function (res) { return res.json(); })
+        this._productService.getProducts()
             .subscribe(function (data) { console.log(data); _this.products = data; }, function (err) { return console.log(err); }, function () { return console.log('yay'); });
     };
-    //getProducts() {
-    //    this.http.get('api/Products').map((res: Response) => res.json())
-    //        .subscribe(
-    //        data => console.log(data),
-    //        err => console.log(err),
-    //        () => console.log('yay')
-    //        );
-    //}
     SecondComponent.prototype.getProducts = function () {
         console.log(this.products);
     };
@@ -38,7 +30,7 @@ SecondComponent = __decorate([
         templateUrl: './app/Second_Component/products.component.html'
     }),
     core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [product_service_1.ProductService])
 ], SecondComponent);
 exports.SecondComponent = SecondComponent;
 //# sourceMappingURL=second.component.js.map

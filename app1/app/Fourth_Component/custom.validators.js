@@ -4,7 +4,7 @@ var CustomValidators = (function () {
     }
     CustomValidators.inStock = function (control) {
         console.log("2");
-        return control.value == "true" ? null : { valid: false };
+        return (control.value == "true" || control.value == "false") ? null : { valid: false };
     };
     return CustomValidators;
 }());

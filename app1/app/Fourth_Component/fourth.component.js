@@ -9,18 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/do");
 var custom_validators_1 = require("./custom.validators");
+var product_service_1 = require("../services/product.service");
 var FourthComponent = (function () {
-    function FourthComponent(http, router, _fb) {
-        this.http = http;
+    function FourthComponent(router, _fb, _productService) {
         this.router = router;
         this._fb = _fb;
+        this._productService = _productService;
     }
     FourthComponent.prototype.ngOnInit = function () {
         console.log("1");
@@ -32,13 +32,8 @@ var FourthComponent = (function () {
         });
     };
     FourthComponent.prototype.addProduct = function () {
-        ////formValues.date = new Date();
-        console.log(this.profileForm.value);
         if (this.profileForm.valid) {
-            var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-            var options = new http_1.RequestOptions({ headers: headers });
-            this.http.post('api/Combiners', JSON.stringify(this.profileForm.value), options)
-                .map(function (res) { return res.json(); })
+            this._productService.create(this.profileForm.value)
                 .subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); }, function () { return console.log('yay post'); });
         }
         else {
@@ -55,8 +50,7 @@ FourthComponent = __decorate([
         selector: 'fourth-app',
         templateUrl: './app/Fourth_Component/fourthcomponent.html'
     }),
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http, router_1.Router, forms_1.FormBuilder])
+    __metadata("design:paramtypes", [router_1.Router, forms_1.FormBuilder, product_service_1.ProductService])
 ], FourthComponent);
 exports.FourthComponent = FourthComponent;
 //# sourceMappingURL=fourth.component.js.map

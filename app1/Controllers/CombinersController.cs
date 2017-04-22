@@ -40,18 +40,14 @@ namespace app1.Controllers
 
         // PUT: api/Combiners/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCombiner(int id, Combiner combiner)
+        public async Task<IHttpActionResult> PutCombiner(Combiner combiner)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != combiner.Id)
-            {
-                return BadRequest();
-            }
-
+            
             db.Entry(combiner).State = EntityState.Modified;
 
             try
@@ -60,7 +56,7 @@ namespace app1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CombinerExists(id))
+                if (!CombinerExists(combiner.ProductName))
                 {
                     return NotFound();
                 }
@@ -81,16 +77,12 @@ namespace app1.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            using (var db1 = new app1Context())
-            {
                 var product = new Product() { ProductName = combiner.ProductName, Price = combiner.Price, InStock = combiner.InStock };
                 product.ProductDetails = new ProductDetails() { ProductCompany = combiner.ProductCompany };
 
-                db1.Products.Add(product);
-                await db1.SaveChangesAsync();
-            }
-
+                db.Products.Add(product);
+                await db.SaveChangesAsync();
+           
             return CreatedAtRoute("DefaultApi", new { id = combiner.Id }, combiner);
         }
 
@@ -119,9 +111,12 @@ namespace app1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CombinerExists(int id)
+        private bool CombinerExists(String name)
         {
-            return db.Combiners.Count(e => e.Id == id) > 0;
+            if (db.Combiners.Where(e => e.ProductName == name) != null)
+                return true;
+            else
+                return false;
         }
     }
 }

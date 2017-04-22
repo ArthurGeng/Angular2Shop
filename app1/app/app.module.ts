@@ -13,10 +13,12 @@ import { SecondComponent } from './Second_Component/second.component';
 import { ThirdComponent } from './Third_Component/third.component';
 import { FourthComponent } from './Fourth_Component/fourth.component';
 import { ProductDetails } from './productDetails/productDetails';
+import { ProductService } from './services/product.service';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, ReactiveFormsModule,HttpModule, RouterModule.forRoot(routes, { useHash: true })],
     declarations: [AppComponent, FirstComponent, SecondComponent, ThirdComponent, FourthComponent, ProductDetails],
+    providers: [ProductService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
